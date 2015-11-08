@@ -1,0 +1,193 @@
+﻿<Window x:Class="AccountingInHousing.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AccountingInHousing"
+        mc:Ignorable="d"
+        Title="Учёт в ЖПК" 
+        WindowStartupLocation="CenterScreen" 
+        Icon="Resources/Home.ico" 
+        MinWidth="1000" MinHeight="600" 
+        x:Name="MainWindow1" Width="1000" Height="600">
+
+    <Grid>
+        <Menu Height="27" VerticalAlignment="Top">
+            <MenuItem Header="MenuItem" Margin="0,4,0,0" />
+            <MenuItem Header="MenuItem" Margin="0,4,0,0" />
+            <MenuItem Header="ЖПК" Margin="0,4,0,0">
+                <MenuItem Header="ЖПК" Margin="0,4,0,0">
+                    <MenuItem Header="Добавить кооператив" FontSize="12" Foreground="Black"/>
+                    <MenuItem Header="Редактировать кооператив" FontSize="12" Foreground="Black"/>
+                    <MenuItem Header="Удалить кооператив" FontSize="12" Foreground="Black"/>
+                </MenuItem>
+                <MenuItem Header="Дом" Margin="0,4,0,0">
+                    <MenuItem Header="Добавить дом" FontSize="12" Foreground="Black"/>
+                    <MenuItem Header="Редактировать дом" FontSize="12" Foreground="Black"/>
+                    <MenuItem Header="Удалить дом" FontSize="12" Foreground="Black"/>
+                    <Separator/>
+                    <MenuItem Header="Редактировать спиок квартир" FontSize="12" Foreground="Black"/>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Справка" HorizontalContentAlignment="Right" HorizontalAlignment="Right" Margin="0,4,0,0">
+                <MenuItem Header="Просмотр справки" FontSize="12" Foreground="Black"/>
+                <Separator/>
+                <MenuItem x:Name="menuViewHelp" Header="Просмотр справки" FontSize="12" Foreground="Black"/>
+                <MenuItem x:Name="menuAbout" Header="О программе .." FontSize="12"  Foreground="Black"/>
+            </MenuItem>
+        </Menu>
+
+
+
+        <Label Content="Кооператив:" Margin="0,0,379,0" Style="{StaticResource labelStyle}" HorizontalAlignment="Right" />
+        <Label Content="Дом:" Margin="0,0,145,0" Style="{StaticResource labelStyle}" HorizontalAlignment="Right" />
+        <ComboBox x:Name="comboBoxCooperative" 
+                  Width="180" 
+                  VerticalAlignment="Top"
+                  HorizontalAlignment="Right"  
+                  Margin="0,2,200,0" 
+                  HorizontalContentAlignment="Center" 
+                  SelectionChanged="comboBoxCooperative_SelectionChanged"
+                  SelectedValue="{Binding Path=SelectedCooperativeValue, Mode=OneWayToSource}"
+                  ItemsSource="{Binding Path=Cooperatives}" 
+                  DisplayMemberPath="НаименованиеЖПК" 
+                  SelectedValuePath="КодЖПК"
+                   />
+        <ComboBox x:Name="comboBoxHouse" 
+                  Width="120"
+                  VerticalAlignment="Top" 
+                  HorizontalAlignment="Right" 
+                  Margin="0,2,25,0"  
+                  SelectedValue="{Binding Path=SelectedHauseValue, Mode=OneWayToSource}"
+                  ItemsSource="{Binding Path=Houses}" 
+                  DisplayMemberPath="НаименованиеДома" 
+                  SelectedValuePath="КодДома"
+                  HorizontalContentAlignment="Center" />
+
+        <TabControl x:Name="tabSystem" Background="#FFF9F9F9" Margin="0,33,0,25" BorderThickness="0">
+            <TabItem x:Name="tabCooperativeСontent" Header="ЖПК" Width="70">
+                <Grid Background="#FFF4F4F5">
+                    <Grid Margin="10,15,0,0">
+                        <Label x:Name="labelCooperativeName" Content="Наименование:"  Margin="48,0,0,0" Style="{StaticResource labelStyle}" />
+                        <Label x:Name="labelFullCooperativeName" Content="Полное наименование:" HorizontalAlignment="Left" Margin="5,26,0,0" VerticalAlignment="Top"/>
+                        <Label x:Name="labelLegalAddress" Content="Юридический адрес:" Margin="18,52,0,0" Style="{StaticResource labelStyle}" />
+                        <TextBox x:Name="textBoxCooperativeName" Text="{Binding Path=SelectedCooperative.НаименованиеЖПК, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" Margin="145,2,0,0" Width="300" MaxLength="50" Style="{StaticResource textStyle}" />
+                        <TextBox x:Name="textBoxFullCooperativeName" Text="{Binding Path=SelectedCooperative.ПолноеНаименованиеЖПК, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" Margin="145,28,0,0" Width="550" Style="{StaticResource textStyle}" />
+                        <TextBox x:Name="textBoxLegalAddress" Text="{Binding Path=SelectedCooperative.ЮридическийАдрес, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" Margin="145,54,0,0" Width="550" MaxLength="100" Style="{StaticResource textStyle}" />
+
+                        <Label x:Name="labelUNP" Content="УНП:" Margin="791,0,0,0" Style="{StaticResource labelStyle}" />
+                        <Label x:Name="labelCheckingAccount" Content="Р/c:" Margin="797,26,0,0" Style="{StaticResource labelStyle}" />
+                        <TextBox x:Name="textBoxUNP" Text="{Binding Path=SelectedCooperative.УНП, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" Margin="832,2,0,0" Width="120" MaxLength="9" Style="{StaticResource textStyle}" TextAlignment="Center" />
+                        <TextBox x:Name="textBoxCheckingAccount" Text="{Binding Path=SelectedCooperative.РасчетныйСчет, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" Margin="832,28,0,0" Width="120" MaxLength="13" Style="{StaticResource textStyle}" TextAlignment="Center" />
+
+                        <Label x:Name="labelBankСode" Content="Код банка:" Margin="76,88,0,0" Style="{StaticResource labelStyle}" />
+                        <Label x:Name="labelBankName" Content="Наименование банка:" Margin="13,114,0,0" Style="{StaticResource labelStyle}" />
+                        <TextBox x:Name="textBoxBankСode" Text="{Binding Path=SelectedCooperative.КодБанка, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" Margin="145,90,0,0" Width="120" Style="{StaticResource textStyle}" TextAlignment="Center" />
+                        <TextBox x:Name="textBoxBankName" Text="{Binding Path=SelectedCooperative.НаименованиеБанка, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" Margin="145,116,0,0" Width="550" MaxLength="50" Style="{StaticResource textStyle}" />
+
+                        <Label x:Name="labelLandArea" Content="Площадь земельного участка:" Margin="36,186,0,0" Style="{StaticResource labelStyle}" />
+                        <Label x:Name="labelBuiltUpArea" Content="Площадь застройки:" Margin="290,186,0,0" Style="{StaticResource labelStyle}" />
+                        <Label x:Name="labelLivingArea" Content="Общая площадь жилых помещений:" Margin="0,216,0,0" Style="{StaticResource labelStyle}" />
+                        <TextBox x:Name="textBoxLandArea" Text="{Binding Path=SelectedCooperative.ПлощадьЗемельногоУчастка, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" Margin="214,188,0,0" Width="75" Style="{StaticResource textStyle}" />
+                        <TextBox x:Name="textBoxBuiltUpArea" Text="{Binding Path=SelectedCooperative.ПлощадьЗастройки, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" Margin="416,188,0,0" Width="75" Style="{StaticResource textStyle}" />
+                        <TextBox x:Name="textBoxLivingArea" Text="{Binding Path=SelectedCooperative.ОбщаяПлощадьЖилыхПомещений, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" Margin="213,217,0,0" Width="75" Style="{StaticResource textStyle}" />
+
+                        <Button x:Name="buttonCooperatuveSave" Content="Сохранить" HorizontalAlignment="Left" Margin="877,237,0,0" VerticalAlignment="Top" Width="75" Command="{Binding Path=UpdateCooperativeCommand}" />
+
+                        <Label x:Name="labelOKPO" Content="ОКПО:" Margin="781,52,0,0" Style="{StaticResource labelStyle}" />
+                        <TextBox x:Name="textBoxOKPO" Text="{Binding Path=SelectedCooperative.ОКПО, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" HorizontalAlignment="Left" Margin="832,54,0,0" Width="120" Style="{StaticResource textStyle}" TextAlignment="Center" />
+
+                        <Label x:Name="labelUNPF" Content="УНПФ:" Margin="99,150,0,0" Style="{StaticResource labelStyle}" />
+                        <TextBox x:Name="textBoxUNPF" Text="{Binding Path=SelectedCooperative.УНПФ, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" Margin="145,152,0,0" Width="120" Style="{StaticResource textStyle}" TextAlignment="Center"/>
+                        <Label x:Name="labelRegNumberBelgosstrah" Content="Регистрационный номер в Белгосстрахе:" Margin="341,150,0,0" Style="{StaticResource labelStyle}" />
+                        <TextBox x:Name="textBoxRegNumberBelgosstrah" Text="{Binding Path=SelectedCooperative.РегистрационныйНомерВБелгосстрахе, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}"  Margin="575,152,0,0" Width="120" Style="{StaticResource textStyle}" TextAlignment="Center"/>
+
+                    </Grid>
+
+                    <Label x:Name="labelEmployees" Content="Сотрудники:" Margin="23,271,0,0" FontWeight="Bold" Style="{StaticResource labelStyle}" />
+
+                    <DataGrid x:Name="dataGridEmployees" ItemsSource="{Binding}" Margin="10,298,0,35" Style="{StaticResource dataGridStyle}" Height="Auto" >
+                        <DataGrid.CellStyle>
+                            <Style TargetType="DataGridCell" >
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="Orange"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ФИО"  Binding="{Binding ФИО}" Width="300"/>
+                            <DataGridTextColumn Header="Должность"  Binding="{Binding Должность}" Width="100"/>
+                            <DataGridTextColumn Header="Дата приема" Binding="{Binding ДатаПриема}" Width="80" />
+                            <DataGridTextColumn Header="Дата увольнения" Binding="{Binding ДатаУвольнения}" Width="85" />
+                            <DataGridTextColumn Header="Ставка"  Binding="{Binding Ставка}"/>
+                            <DataGridTextColumn Header="Оклад"  Binding="{Binding Оклад}" Width="80"/>
+                            <DataGridTextColumn Header="Телефон"  Binding="{Binding Телефон}" Width="70" />
+                            <DataGridTextColumn Header="Примечания"  Binding="{Binding Примечания}" Width="*" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="button2" Content="Добавить" HorizontalAlignment="Right" Margin="0,0,20,7.5" VerticalAlignment="Bottom" Width="75" RenderTransformOrigin="1.067,0.55"/>
+                    <CheckBox x:Name="checkBox" Content="Показать уволенных" HorizontalAlignment="Left" Margin="23,0,0,9" VerticalAlignment="Bottom"/>
+                </Grid>
+            </TabItem>
+
+
+
+            <TabItem Header="Тест" Width="70">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="61*"/>
+                        <ColumnDefinition Width="191*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="dataGridFlat1" SelectionUnit="Cell" HorizontalAlignment="Left" Margin="10,225,0,0" VerticalAlignment="Top" Height="378" Width="500" AutoGenerateColumns="True" ItemsSource="{Binding}" AlternationCount="2" AlternatingRowBackground="#FFF0F0F0" Grid.ColumnSpan="2" >
+                        <DataGrid.CellStyle>
+                            <Style TargetType="DataGridCell" >
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="Orange"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
+                    </DataGrid>
+
+                    <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="401.261,180,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+
+
+
+
+
+
+
+        <ComboBox x:Name="cbMonthPicker" HorizontalAlignment="Right" Margin="0,33,25,0" VerticalAlignment="Top" Width="164" Height="20">
+            <Calendar Name="calendarMonthPicker" DisplayMode="Year" HorizontalAlignment="Center" HorizontalContentAlignment="Right" />
+        </ComboBox>
+        <TextBox x:Name="tbMonthPicker" HorizontalAlignment="Right" Height="20" Margin="0,33,44,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="145" TextAlignment="Center" />
+        <Label x:Name="label" Content="Расчетный месяц:" HorizontalAlignment="Right" Margin="0,29,192,0" VerticalAlignment="Top"/>
+
+
+
+
+
+
+
+
+
+        <StatusBar Height="20" DockPanel.Dock="Top" ScrollViewer.VerticalScrollBarVisibility="Disabled" Focusable="False" Background="#7FFFFFFF" BorderBrush="#7F000000" BorderThickness="1" VerticalAlignment="Bottom">
+            <StatusBarItem>
+                <Label Content="{Binding Path=SelectedItem.Header, ElementName=tabSystem}" />
+            </StatusBarItem>
+            <StatusBarItem >
+                <Label Name="lblInfo" FontWeight="Normal" />
+            </StatusBarItem>
+        </StatusBar>
+
+
+    </Grid>
+</Window>

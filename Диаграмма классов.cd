@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AccountingInHousing.CooperativeViewModel">
+    <Position X="10.5" Y="4" Width="3" />
+    <InheritanceLine Type="AccountingInHousing.Notifier" ManuallyRouted="true">
+      <Path>
+        <Point X="15.75" Y="2.055" />
+        <Point X="15.75" Y="2.69" />
+        <Point X="12" Y="2.69" />
+        <Point X="12" Y="4" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>DAwEyAAAAAAUAgQAAAAAAA0BAoABIIAgAIAAgAQAIKQ=</HashCode>
+      <FileName>ViewModel\CooperativeViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AccountingInHousing.HouseViewModel">
+    <Position X="14.5" Y="4.5" Width="2.75" />
+    <InheritanceLine Type="AccountingInHousing.Notifier" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="15.75" Y="2.055" />
+        <Point X="15.75" Y="3.016" />
+        <Point X="15.76" Y="3.016" />
+        <Point X="15.76" Y="4.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>BAQAgAAIAAAAAAACAAAAAAgEEASCAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\HouseViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.145" />
+  </Class>
+  <Class Name="AccountingInHousing.ViewModel">
+    <Position X="18.75" Y="3.75" Width="2.5" />
+    <InheritanceLine Type="AccountingInHousing.Notifier" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="15.75" Y="2.055" />
+        <Point X="15.75" Y="2.727" />
+        <Point X="20" Y="2.727" />
+        <Point X="20" Y="3.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAgAKAAAAFAAAgjQIAACAgAAAAABBACKACAAAAAA=</HashCode>
+      <FileName>ViewModel\ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AccountingInHousing.UpdateCommand">
+    <Position X="22.25" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAwAAEAAAAAABAAAAAAAgCAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\ViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AccountingInHousing.DataModel">
+    <Position X="24.5" Y="5.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAKAAAAAAAEAAAIAAEAAAAAAAAAAQCAAAAAAAA=</HashCode>
+      <FileName>Model\Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AccountingInHousing.CooperativeEventArgs">
+    <Position X="24.25" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>Model\Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AccountingInHousing.Notifier">
+    <Position X="14.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Model.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AccountingInHousing.DAL.AccountingInHousingContext">
+    <Position X="0.5" Y="1.5" Width="2.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="AccountingInHousing.DAL.ЖПК" BaseTypeListCollapsed="true">
+    <Position X="3" Y="5.25" Width="3" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AccountingInHousing.DAL.Квартиры">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="AccountingInHousing.DAL.МногоквартирныйЖилойДом" BaseTypeListCollapsed="true">
+    <Position X="7.25" Y="5.75" Width="2.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AccountingInHousing.MainWindow">
+    <Position X="26.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="AccountingInHousing.DAL.ICooperative">
+    <Position X="3.25" Y="0.75" Width="3" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="AccountingInHousing.DAL.IHouse">
+    <Position X="7.25" Y="2" Width="1.75" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

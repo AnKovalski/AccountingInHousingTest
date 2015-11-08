@@ -1,0 +1,75 @@
+﻿<Application x:Class="AccountingInHousing.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:AccountingInHousing"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <!--Images for buttons-->
+        <BitmapImage x:Key="dataIco" UriSource="pack://application:,,,/AccountingInHousing;component/resources/Calendar.png"/>
+        <!--Theme color-->
+        <Color x:Key="themeColor" A="#FF" R="#00" G="#7A" B="#CC"/>
+        <!--Brush for colored panels-->
+        <SolidColorBrush x:Key="borderBackBrush" Color="{StaticResource themeColor}" />
+        <!--Style for tables. Represents some DataGrid properties-->
+        <Style x:Key="dataGridStyle" TargetType="DataGrid">
+            <Setter Property="AutoGenerateColumns" Value="False"></Setter>
+            <Setter Property="EnableRowVirtualization" Value="True"></Setter>
+            <Setter Property="CanUserResizeColumns" Value="False"></Setter>
+            <Setter Property="RowDetailsVisibilityMode" Value="VisibleWhenSelected"></Setter>
+            <Setter Property="IsReadOnly" Value="True"></Setter>
+            <Setter Property="HeadersVisibility" Value="Column"></Setter>
+            <Setter Property="ColumnHeaderStyle" Value="{DynamicResource ColumnHeaderStyle}"></Setter>
+            <Setter Property="MaxWidth" Value="2000"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        </Style>
+        <!--Style for label-->
+        <Style x:Key="labelStyle" TargetType="Label">
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+        </Style>
+        <!--Style for textBox-->
+        <Style x:Key="textStyle" TargetType="TextBox">
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="Height" Value="23" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontFamily" Value="Segoe UI Emoji" />
+        </Style>
+        <!--Style for custom column header-->
+        <Style x:Key="ColumnHeaderStyleOld" TargetType="DataGridColumnHeader">
+            <Setter Property="MinHeight" Value="25"/>
+            <Setter Property="Background" Value="{DynamicResource borderBackBrush}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="Padding" Value="2"></Setter>
+            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+            <Setter Property="SnapsToDevicePixels" Value="True"></Setter>
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" TextWrapping="Wrap" TextAlignment="Center"></TextBlock>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Black"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="ColumnHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="MinHeight" Value="25"/>
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" TextWrapping="Wrap" TextAlignment="Center"></TextBlock>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Application.Resources>
+</Application>
